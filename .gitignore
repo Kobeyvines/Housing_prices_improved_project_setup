@@ -5,6 +5,15 @@ data/03-features/*
 data/04-predictions/*
 !data/*/.gitkeep
 
+# Images (generated plots and visualizations)
+images/*.png
+images/*.jpg
+images/*.jpeg
+images/*.pdf
+!images/README.md
+!images/.gitkeep
+!images/project_structure.png
+
 # DVC
 !.dvc/
 !.dvcignore

@@ -326,3 +326,63 @@ def ensure_dir_exists(dir_path: str) -> None:
         dir_path: Path to directory
     """
     Path(dir_path).mkdir(parents=True, exist_ok=True)
+
+
+def save_plot(fig, filename: str, images_dir: str = "images") -> str:
+    """Save matplotlib figure to images directory.
+
+    Args:
+        fig: Matplotlib figure object
+        filename: Name of the file (with or without extension)
+        images_dir: Directory to save images (default: 'images')
+
+    Returns:
+        Path to saved image file
+    """
+    ensure_dir_exists(images_dir)
+
+    # Ensure filename has extension
+    if not filename.endswith((".png", ".jpg", ".pdf")):
+        filename = f"{filename}.png"
+
+    filepath = Path(images_dir) / filename
+    fig.savefig(filepath, dpi=300, bbox_inches="tight")
+    logger.info(f"Saved plot to {filepath}")
+
+    return str(filepath)
+
+
+def save_image(image_array, filename: str, images_dir: str = "images") -> str:
+    """Save image array (numpy or PIL) to images directory.
+
+    Args:
+        image_array: Image array (numpy array or PIL Image)
+        filename: Name of the file (with or without extension)
+        images_dir: Directory to save images (default: 'images')
+
+    Returns:
+        Path to saved image file
+    """
+    ensure_dir_exists(images_dir)
+
+    # Ensure filename has extension
+    if not filename.endswith((".png", ".jpg", ".pdf")):
+        filename = f"{filename}.png"
+
+    filepath = Path(images_dir) / filename
+
+    # Handle different image types
+    try:
+        from PIL import Image
+
+        if isinstance(image_array, Image.Image):
+            image_array.save(filepath, quality=95)
+        else:
+            # Assume numpy array
+            Image.fromarray(image_array).save(filepath, quality=95)
+    except ImportError:
+        logger.warning("PIL not available, attempting numpy save")
+        np.save(filepath, image_array)
+
+    logger.info(f"Saved image to {filepath}")
+    return str(filepath)
