@@ -94,7 +94,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: kobeyvines/kaggle_housing_prices_ml_project:latest
+          tags: kaggle_housing_prices_ml_project:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -103,4 +103,4 @@ jobs:
     steps:
       - name: Deploy placeholder
         run: |
-          echo "Deploying kobeyvines/kaggle_housing_prices_ml_project..."
+          echo "Deploying kaggle_housing_prices_ml_project..."
