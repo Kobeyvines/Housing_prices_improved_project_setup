@@ -6,8 +6,8 @@ data/04-predictions/*
 !data/*/.gitkeep
 
 # DVC
-.dvc/
-*.dvc
+!.dvc/
+!.dvcignore
 
 # Git LFS
 .gitattributes
