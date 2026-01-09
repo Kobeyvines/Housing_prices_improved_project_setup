@@ -1,27 +1,21 @@
-# Machine Learning & Experimentation
-scikit-learn==1.4.0
-catboost==1.2.8
-optuna==4.3.0
-
-# Core Data & Config
+# Production Dependencies
+# Machine Learning & Core Libraries
 numpy==1.26.4
 pandas==2.2.2
+scikit-learn==1.4.0
 pyarrow==20.0.0
+
+# Configuration Management
 pyyaml==6.0.2
 python-dateutil==2.8.2
 
-# API & Web Services
+# Optional: Advanced ML Models
+catboost==1.2.8
+xgboost==2.0.0
+
+# API & Deployment
 flask==3.0.2
 flask-cors==4.0.0
 
-# Data Analysis & Plotting (for notebooks/dev)
-ydata-profiling==4.16.1
-matplotlib==3.8.2
-seaborn==0.13.1
-jupyter==1.0.0
-
-# Development & Tooling
-pytest==7.4.4
-black==24.1.1
-flake8==7.0.0
-pre-commit==3.6.0
+# Logging and Monitoring
+python-dotenv==1.0.0
